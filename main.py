@@ -5,6 +5,7 @@ import base64
 from requests import post, get
 import json
 
+
 # Load environment variables from .env file
 load_dotenv()
 
@@ -74,16 +75,25 @@ def get_songs_by_artist(token, artist_id, country):
     json_result = json.loads(result.content)["tracks"]
     return json_result
 
+def get_artist_name():
+    artist_name = input("Enter an artist name: ")
+    return artist_name
+
 # Get the API token
 token = get_token()
 
+artist_name = get_artist_name()
+
 # Search for an artist by name and get their ID
-result = search_for_artist(token, "slowdive")
+result = search_for_artist(token, artist_name)
 artist_id = result["id"]
 
 # Get top tracks of the artist in different countries
 songsTR = get_songs_by_artist(token, artist_id, "TR")
 songsUS = get_songs_by_artist(token, artist_id, "US")
+
+#clears the text file
+open("text.txt", "w").close()
 
 #Opens a text file
 file = open("text.txt", "a")
