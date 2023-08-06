@@ -85,6 +85,16 @@ artist_id = result["id"]
 songsTR = get_songs_by_artist(token, artist_id, "TR")
 songsUS = get_songs_by_artist(token, artist_id, "US")
 
+#Opens a text file
+file = open("text.txt", "a")
+
+#Writes top ten songs from us into the text file
+for idx, song in enumerate(songsUS):
+    file.write(f"{idx + 1}. {song['name']}\n")
+
+#Closes the text file    
+file.close()
+
 # Print the top tracks for each country
 for idx, song in enumerate(songsTR):  
     print(f"{idx + 1}. {song['name']}")
