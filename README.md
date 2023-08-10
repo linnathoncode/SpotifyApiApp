@@ -1,4 +1,3 @@
 # SpotifyApiApp
-spotify app that prints given artists' top tracks by given country
+spotify app that prints given artist's top tracks
 
-you also need to add your client id and client secret to an environment file
